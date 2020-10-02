@@ -1,25 +1,41 @@
-import React, { Component } from "react";
-require("dotenv").config();
+import React from "react";
 
-export default class Users extends Component {
+import axios from "axios";
+
+export default class Users extends React.Component {
+  state = {
+    persons: [],
+  };
+
+  componentDidMount() {
+    axios.get(`https://jsonplaceholder.typicode.com/users`).then((res) => {
+      const persons = res.data;
+      this.setState({ persons });
+    });
+  }
+
   render() {
     return (
-      <div>
-        <table className="ui single line table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>E-mail address</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{username}</td>
-              <td>{email}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <ul>
+        {this.state.persons.map((person) => (
+          <table class="ui celled table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Name">{person.name}</td>
+                <td data-label="Age">{person.email}</td>
+                <td data-label="Job">{person.username}</td>
+              </tr>
+            </tbody>
+          </table>
+        ))}
+      </ul>
     );
   }
 }
