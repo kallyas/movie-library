@@ -16,26 +16,30 @@ export default class Users extends React.Component {
 
   render() {
     return (
-      <ul>
-        {this.state.persons.map((person) => (
-          <table class="ui celled table">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Username</th>
-                <th>Email</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td data-label="Name">{person.name}</td>
-                <td data-label="Age">{person.email}</td>
-                <td data-label="Job">{person.username}</td>
-              </tr>
-            </tbody>
-          </table>
-        ))}
-      </ul>
+      <table class="ui green table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Website</th>
+          </tr>
+        </thead>
+        <>
+          {this.state.persons.map((person) => (
+            <>
+              <tbody>
+                <tr>
+                  <td data-label="Name">{person.name}</td>
+                  <td data-label="Age">{person.email}</td>
+                  <td data-label="Job">{person.username}</td>
+                  <td data-label="website">{person.website}</td>
+                </tr>
+              </tbody>
+            </>
+          ))}
+        </>
+      </table>
     );
   }
 }
