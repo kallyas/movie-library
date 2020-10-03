@@ -16,7 +16,7 @@ export default class Users extends React.Component {
 
   render() {
     return (
-      <table class="ui green table">
+      <table className="ui green table">
         <thead>
           <tr>
             <th>Name</th>
@@ -27,7 +27,7 @@ export default class Users extends React.Component {
         </thead>
         <>
           {this.state.persons.map((person) => (
-            <>
+            <React.Fragment key={person.id}>
               <tbody>
                 <tr>
                   <td data-label="Name">{person.name}</td>
@@ -36,7 +36,7 @@ export default class Users extends React.Component {
                   <td data-label="website">{person.website}</td>
                 </tr>
               </tbody>
-            </>
+            </React.Fragment>
           ))}
         </>
       </table>
